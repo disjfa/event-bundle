@@ -7,3 +7,11 @@ services:
     Disjfa\EventBundle\:
         resource: './../../*'
         exclude: './../../{Entity,Migrations,Tests}'
+
+    Disjfa\EventBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    Disjfa\EventBundle\EventListener\FullCalendarListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadEvents }

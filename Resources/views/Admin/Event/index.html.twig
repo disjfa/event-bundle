@@ -1,0 +1,53 @@
+{% extends "admin.html.twig" %}
+
+{% trans_default_domain 'disjfa-event' %}
+
+{% block body %}
+    <div class="container py-3">
+        <div>
+            <a href="{{ path('disjfa_event_admin_event_create') }}" class="btn btn-primary">
+                {{ 'event.button.create_new' | trans }}
+            </a>
+        </div>
+        <br>
+        {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+
+    <script>
+      $(function () {
+        $('#calendar-holder').fullCalendar({
+          header: {
+            left: 'prev, next, today',
+            center: 'title',
+            right: 'month, basicWeek, basicDay'
+          },
+          lazyFetching: true,
+          navLinks: true,
+          eventSources: [
+            {
+              url: '{{ path('fullcalendar_load_events') }}',
+              type: 'POST',
+              data: {
+                filters: {}
+              },
+              error: function () {
+                alert('There was an error while fetching FullCalendar!');
+              }
+            }
+          ]
+        });
+      });
+    </script>
+{% endblock %}
