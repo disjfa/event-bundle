@@ -2,7 +2,7 @@
 
 {% trans_default_domain 'disjfa-event' %}
 
-{% block body %}
+{% block main %}
     <div class="container py-3">
         <div>
             <a href="{{ path('disjfa_event_admin_event_create') }}" class="btn btn-primary">
@@ -14,12 +14,12 @@
     </div>
 {% endblock %}
 
-{% block stylesheet %}
+{% block head_stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}"/>
 {% endblock %}
 
-{% block javascripts %}
+{% block body_javascript %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
