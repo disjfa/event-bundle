@@ -18,7 +18,8 @@ class FullCalendarListener
 
     /**
      * FullCalendarListener constructor.
-     * @param TokenStorageInterface $tokenStorage
+     *
+     * @param TokenStorageInterface  $tokenStorage
      * @param EntityManagerInterface $entityManager
      */
     public function __construct(TokenStorageInterface $tokenStorage, EntityManagerInterface $entityManager)

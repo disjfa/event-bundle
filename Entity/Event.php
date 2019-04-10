@@ -32,6 +32,7 @@ class Event implements EventInterface
 
     /**
      * @param UserInterface $user
+     *
      * @throws Exception
      */
     public function __construct(UserInterface $user)

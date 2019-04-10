@@ -28,8 +28,9 @@ class EventController extends AbstractController
 
     /**
      * EventController constructor.
+     *
      * @param EntityManagerInterface $entityManager
-     * @param TranslatorInterface $translator
+     * @param TranslatorInterface    $translator
      */
     public function __construct(EntityManagerInterface $entityManager, TranslatorInterface $translator)
     {
@@ -48,7 +49,9 @@ class EventController extends AbstractController
 
     /**
      * @param Request $request
+     *
      * @return Response
+     *
      * @throws Exception
      * @Route("/create", name="disjfa_event_admin_event_create")
      */
@@ -64,6 +67,7 @@ class EventController extends AbstractController
             $this->entityManager->flush($event);
 
             $this->addFlash('success', $this->translator->trans('message.event_saved', [], 'disjfa-event'));
+
             return $this->redirectToRoute('disjfa_event_admin_event_index');
         }
 
@@ -71,5 +75,4 @@ class EventController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 }

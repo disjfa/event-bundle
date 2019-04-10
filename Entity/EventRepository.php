@@ -10,8 +10,9 @@ class EventRepository extends EntityRepository
 {
     /**
      * @param UserInterface $user
-     * @param DateTime $startDate
-     * @param DateTime $endDate
+     * @param DateTime      $startDate
+     * @param DateTime      $endDate
+     *
      * @return Event[]
      */
     public function findByUserAndDates(UserInterface $user, DateTime $startDate, DateTime $endDate)
